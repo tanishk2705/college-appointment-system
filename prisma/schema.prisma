@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+
+model User {
+  id           Int          @id @default(autoincrement())
+  name         String
+  email        String       @unique
+  password     String
+  role         Role
+  slots        Slot[]       // One-to-many relation with Slot
+  appointments Appointment[] @relation("StudentAppointments") // Relation with Appointment (no fields/references here)
+}
+
+model Slot {
+  id           Int        @id @default(autoincrement())
+  professorId  Int
+  time         DateTime
+  isBooked     Boolean    @default(false)
+  bookedBy     Appointment?  @relation("AppointmentToSlot") // Only define the relation here (no fields/references)
+  appointmentId Int?
+  professor    User       @relation(fields: [professorId], references: [id]) // Foreign key to User
+}
+
+model Appointment {
+  id           Int       @id @default(autoincrement())
+  studentId    Int
+  slotId       Int       @unique
+  student      User      @relation("StudentAppointments", fields: [studentId], references: [id]) // Foreign key to User
+  slot         Slot      @relation("AppointmentToSlot", fields: [slotId], references: [id]) // Foreign key to Slot
+}
+
+enum Role {
+  STUDENT
+  PROFESSOR
+}

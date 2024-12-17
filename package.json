@@ -1,0 +1,38 @@
+{
+  "name": "college-appointment-system",
+  "version": "1.0.0",
+  "description": "The College Appointment System is a backend application built using Node.js and TypeScript that enables seamless scheduling of appointments between students and professors.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanishk2705/college-appointment-system.git"
+  },
+  "author": "Tanishk Gupta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tanishk2705/college-appointment-system/issues"
+  },
+  "homepage": "https://github.com/tanishk2705/college-appointment-system#readme",
+  "dependencies": {
+    "@prisma/client": "^6.0.1",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jest": "^29.7.0",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^6.0.1",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.10.2"
+  }
+}
